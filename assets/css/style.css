@@ -193,3 +193,55 @@ body.lb-open{overflow:hidden}
   .reveal{opacity:1;transform:none;transition:none}
   .grid img{transition:none}
 }
+
+/* ---------- work page ---------- */
+.work-page{background:#fff}
+.work-page .site-header{background:rgba(255,255,255,.92)}
+.w-main{padding-bottom:90px}
+.w-section{text-align:center;padding:80px 0 50px}
+.w-section h2,.w-section .sub{
+  font-size:24px;font-weight:400;text-transform:uppercase;
+  letter-spacing:-.48px;line-height:1.15;
+}
+.w-section .sub{margin-top:8px}
+.w-pair{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.w-pair+.w-pair{margin-top:50px}
+.w-pair button{
+  border:0;padding:0;margin:0;background:none;cursor:zoom-in;
+  display:block;overflow:hidden;aspect-ratio:567/701;
+}
+.w-pair img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s cubic-bezier(.2,.7,.3,1);
+}
+.w-pair button:hover img{transform:scale(1.03)}
+.w-pair button:focus-visible{outline:2px solid #000;outline-offset:2px}
+.w-credit{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px 40px;
+  text-transform:uppercase;font-size:24px;letter-spacing:-.48px;
+  padding:70px 0;text-align:center;
+}
+.site-footer--dark{background:#000}
+
+/* ссылка с главной на полный раздел работ */
+.work-more{
+  display:flex;justify-content:center;padding:44px 0 0;
+  text-transform:uppercase;font-size:16px;letter-spacing:-.32px;
+}
+.work-more a{border-bottom:1px solid rgba(0,0,0,.35);padding-bottom:3px}
+.work-more a:hover{border-bottom-color:#000}
+
+/* якоря не уезжают под липкую шапку */
+#about,#contact,#work,#about-me{scroll-margin-top:62px}
+
+@media (max-width:900px){
+  .w-pair{gap:20px}
+  .w-pair+.w-pair{margin-top:20px}
+  .w-credit{font-size:16px;padding:40px 0;gap:6px 24px}
+  .w-section{padding:50px 0 30px}
+  .w-section h2,.w-section .sub{font-size:18px}
+}
+@media (max-width:600px){
+  .w-pair{grid-template-columns:1fr;gap:12px}
+  .w-pair+.w-pair{margin-top:12px}
+}

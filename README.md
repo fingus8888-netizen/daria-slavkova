@@ -8,12 +8,16 @@
 ## Структура
 
 ```
-index.html           разметка страницы
+index.html           главная (визитка)
+work.html            раздел Selected work — сгенерирован build-work-html.py
 assets/css/style.css стили (токены макета: #F0EEDE, #000, #6F6E63)
 assets/js/main.js    сетка работ, лайтбокс, reveal, смена цвета шапки
 assets/fonts/        NATS (сабсет latin, 8 КБ, OFL)
 assets/img/          hero, портрет, 28 работ (превью 560px + 1500px для лайтбокса)
-build-images.py      пересборка картинок из figma/raw по imageTransform макета
+assets/img/work/     36 снимков листа /work (превью 760px + 1300px)
+build-images.py      пересборка картинок главной из figma/raw по imageTransform макета
+build-work.py        разбор листа /work макета -> work-data.json + assets/img/work
+build-work-html.py   генерация work.html из work-data.json
 figma/               выгрузка макета: nodes.json, fills.json, raw/ (оригиналы)
 ```
 
@@ -21,7 +25,15 @@ figma/               выгрузка макета: nodes.json, fills.json, raw/
 
 шапка → имя → hero → about me → сетка работ (28) → тёмный блок about → контакты → футер
 
-Навигация `Work / About / Contact` — якоря по этой же странице.
+Навигация: `Work` ведёт на work.html (открывается сверху), `About` и `Contact` —
+якоря по главной. Обе страницы всегда открываются сверху: браузерное
+восстановление скролла отключено (`history.scrollRestoration = 'manual'`).
+
+### work.html
+
+Лента листа `/work` макета: 18 пар снимков с кредитами, разделы
+`Selected work` / `art` / `Clients makeup` / `Runway, backstage`, чёрный футер.
+Клик по снимку открывает лайтбокс (36 фото, стрелки, Esc, свайп).
 
 ## Локальный просмотр
 
@@ -51,7 +63,12 @@ git add -A && git commit -m "..." && git push
 python3 build-images.py
 ```
 
-## Что осталось за рамками
+## Пересборка раздела Work
 
-Секция `/work` макета (36 фото с кредитами «Ph / model / makeup artist»)
-в одностраничник не вошла — при необходимости добавляется отдельным блоком.
+```
+python3 build-work.py       # картинки + work-data.json из макета
+python3 build-work-html.py  # work.html из work-data.json
+```
+
+Тексты и порядок блоков правятся либо в `work-data.json` с последующей
+генерацией, либо прямо в `work.html`.
