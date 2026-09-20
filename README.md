@@ -1,5 +1,7 @@
 # Daria Slavkova — one-page site
 
+**Живой сайт:** https://fingus8888-netizen.github.io/daria-slavkova/
+
 Статический одностраничник, собранный из макета Figma
 (`iHaDj0CTNNLRdb58zPTg6g`, секции `Home` и `/about`).
 
@@ -28,8 +30,17 @@ python3 -m http.server 8765 --bind 127.0.0.1
 # http://127.0.0.1:8765/
 ```
 
-Сборка полностью статическая — заливается на любой хостинг как есть
-(nginx, GitHub Pages, Netlify). Ничего собирать не нужно.
+## Публикация
+
+Сайт стоит на GitHub Pages, репозиторий `fingus8888-netizen/daria-slavkova`,
+ветка `main`, корень репозитория. Обновление — обычным пушем:
+
+```
+git add -A && git commit -m "..." && git push
+```
+
+Сборка полностью статическая, ничего компилировать не нужно — Pages
+раскатывает содержимое ветки за 30-60 секунд.
 
 ## Пересборка картинок
 
